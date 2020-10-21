@@ -10,6 +10,6 @@ class PostAPIView(generics.ListCreateAPIView):
 
 
 class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated, IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostDetailSerializer
